@@ -228,7 +228,7 @@
                     "status": "Disabled",
                     "timeInMinutes": 15
                 },
-                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines',concat(parameters('vmName'),copyIndex(parameters('numerationOfVMs'))))]"
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines',concat(parameters('vmName')))]"
             }
         }
         ]
