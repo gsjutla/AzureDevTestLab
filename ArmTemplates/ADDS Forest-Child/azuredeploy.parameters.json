@@ -3,10 +3,79 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "adminUsername": {
-        "value": "GEN-UNIQUE"
+        "value": "lcladmin"
       },
       "adminPassword": {
-        "value": "GEN-PASSWORD"
+        "value": "lcladminP@ssw0rd"
+      },
+      "createChildDomain": {
+        "value": true
+      }, 
+      "createSecondDc": {
+        "value": false
+      }, 
+      "DomainName": {
+        "value": "contoso.com"
+      }, 
+      "ChildDomainName": {
+        "value": "australiaeast"
+      }, 
+      "VMSize": {
+        "value": "Standard_DS1_v2"
+      }, 
+      "imageSKU": {
+        "value": "2019-Datacenter"
+      }, 
+      "diskType": {
+        "value": "StandardSSD_LRS"
+      }, 
+      "virtualNetworkName": {
+        "value": "adVNET"
+      }, 
+      "virtualNetworkAddressRange": {
+        "value": "10.0.0.0/22"
+      }, 
+      "externalDNSForwarder": {
+        "value": "168.63.129.16"
+      }, 
+      "adSubnetName": {
+        "value": "adSubnet"
+      }, 
+      "adSubnet": {
+        "value": "10.0.0.0/24"
+      }, 
+      "RootDC1Name": {
+        "value": "rootdc1"
+      }, 
+      "RootDC1IPAddress": {
+        "value": "10.0.0.4"
+      }, 
+      "RootDC2Name": {
+        "value": "rootdc2"
+      }, 
+      "RootDC2IPAddress": {
+        "value": "10.0.0.5"
+      }, 
+      "ChildDC3Name": {
+        "value": "childdc3"
+      }, 
+      "ChildDC3IPAddress": {
+        "value": "10.0.0.6"
+      }, 
+      "ChildDC4Name": {
+        "value": "childdc4"
+      }, 
+      "ChildDC4IPAddress": {
+        "value": "10.0.0.7"
+      }, 
+      "location": {
+        "value": "[resourceGroup().location]"
+      }, 
+      "_artifactsLocation": {
+        "value": "https://github.com/gsjutla/AzureDevTestLab"
+      }, 
+      "_artifactsLocationSasToken": {
+        "value": ""
       }
     }
   }
