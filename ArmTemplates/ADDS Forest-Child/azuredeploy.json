@@ -18,7 +18,7 @@
       }
     },
     "variables": {
-      "uniquevalue" : "[substring(uniqueString(resourceGroup().id),0,6)]",
+      "uniquevalue" : "[substring(uniqueString(resourceGroup().id),0,4)]",
       "adminUsername": "lcladmin",
       "adminPassword": "lcladminP@ssw0rd",
       "createChildDomain": true,
