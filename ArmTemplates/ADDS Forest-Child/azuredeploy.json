@@ -1,7 +1,22 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+      "_artifactsLocation": {
+        "type": "string",
+        "metadata": {
+          "description": "The location of resources such as templates and DSC modules that the script depends on. No need to change unless you copy or fork this template."
+        },
+        "defaultValue": "https://github.com/gsjutla/AzureDevTestLab"
+      },
+      "_artifactsLocationSasToken": {
+        "type": "securestring",
+        "metadata": {
+          "description": "SAS storage token to access _artifactsLocation. No need to change unless you copy or fork this template."
+        },
+        "defaultValue": ""
+      }
+    },
     "variables": {
       "adminUsername": "lcladmin",
       "adminPassword": "lcladminP@ssw0rd",
@@ -26,19 +41,17 @@
       "ChildDC4Name": "childdc4",
       "ChildDC4IPAddress": "10.0.0.7",
       "location": "[resourceGroup().location]",
-      "_artifactsLocation": "https://github.com/gsjutla/AzureDevTestLab",
-      "_artifactsLocationSasToken": "",
       "adNSGName": "[concat(variables('adSubnetName'),'NSG')]",
       "adAvailabilitySetNameRoot": "AvailSetRoot",
       "adAvailabilitySetNameChild": "AvailSetChild",
-      "firstVMTemplateUri": "[concat(variables('_artifactsLocation'),'/nested/CreateAndPrepnewVM.json',variables('_artifactsLocationSasToken'))]",
-      "nextVMTemplateUri": "[concat(variables('_artifactsLocation'),'/nested/CreateAndPrepnewVM.json',variables('_artifactsLocationSasToken'))]",
-      "vnetTemplateUri": "[concat(variables('_artifactsLocation'),'/nested/vnet.json',variables('_artifactsLocationSasToken'))]",
-      "vnetwithDNSTemplateUri": "[concat(variables('_artifactsLocation'),'/nested/vnet-with-dns-server.json',variables('_artifactsLocationSasToken'))]",
-      "configureADNextDCTemplateUri": "[concat(variables('_artifactsLocation'),'/nested/configureADNextDC.json',variables('_artifactsLocationSasToken'))]",
-      "createForestTemplateUri": "[concat(variables('_artifactsLocation'),'/nested/createForest.json',variables('_artifactsLocationSasToken'))]",
-      "createChildDomainTemplateUri": "[concat(variables('_artifactsLocation'),'/nested/createChildDomain.json',variables('_artifactsLocationSasToken'))]",
-      "nextDCConfigurationModulesURL": "[concat(variables('_artifactsLocation'),'/DSC/ConfigureADNextDC.ps1.zip',variables('_artifactsLocationSasToken'))]",
+      "firstVMTemplateUri": "[concat(parameters('_artifactsLocation'),'/nested/CreateAndPrepnewVM.json',parameters('_artifactsLocationSasToken'))]",
+      "nextVMTemplateUri": "[concat(parameters('_artifactsLocation'),'/nested/CreateAndPrepnewVM.json',parameters('_artifactsLocationSasToken'))]",
+      "vnetTemplateUri": "[concat(parameters('_artifactsLocation'),'/nested/vnet.json',parameters('_artifactsLocationSasToken'))]",
+      "vnetwithDNSTemplateUri": "[concat(parameters('_artifactsLocation'),'/nested/vnet-with-dns-server.json',parameters('_artifactsLocationSasToken'))]",
+      "configureADNextDCTemplateUri": "[concat(parameters('_artifactsLocation'),'/nested/configureADNextDC.json',parameters('_artifactsLocationSasToken'))]",
+      "createForestTemplateUri": "[concat(parameters('_artifactsLocation'),'/nested/createForest.json',parameters('_artifactsLocationSasToken'))]",
+      "createChildDomainTemplateUri": "[concat(parameters('_artifactsLocation'),'/nested/createChildDomain.json',parameters('_artifactsLocationSasToken'))]",
+      "nextDCConfigurationModulesURL": "[concat(parameters('_artifactsLocation'),'/DSC/ConfigureADNextDC.ps1.zip',parameters('_artifactsLocationSasToken'))]",
       "nextDCConfigurationFunction": "ConfigureADNextDC.ps1\\ConfigureADNextDC"
     },
     "resources": [
@@ -208,10 +221,10 @@
               "value": "[variables('externalDNSForwarder')]"
             },
             "_artifactsLocation": {
-              "value": "[variables('_artifactsLocation')]"
+              "value": "[parameters('_artifactsLocation')]"
             },
             "_artifactsLocationSasToken": {
-              "value": "[variables('_artifactsLocationSasToken')]"
+              "value": "[parameters('_artifactsLocationSasToken')]"
             }
           }
         }
@@ -306,10 +319,10 @@
               "value": "[variables('RootDC1IPAddress')]"
             },
             "_artifactsLocation": {
-              "value": "[variables('_artifactsLocation')]"
+              "value": "[parameters('_artifactsLocation')]"
             },
             "_artifactsLocationSasToken": {
-              "value": "[variables('_artifactsLocationSasToken')]"
+              "value": "[parameters('_artifactsLocationSasToken')]"
             }
           }
         }
